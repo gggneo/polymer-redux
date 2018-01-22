@@ -1,0 +1,86 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="demo/redux-mixin.html">
+
+<dom-module id="ford-app-redux">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #backgroundSection {
+        width:100px;
+        height:100px;
+      }     
+    </style>
+    
+    <h3>Redux - [[bkgroundcolor]] </h3>    
+    <div class="section">
+       <div  style$="background-color:[[bkgroundcolor]]"id="backgroundSection"></div>
+       <button on-click="changeColor" data-color="green">Green</button>
+       <button on-click="changeColor" data-color="blue">Blue</button>
+       <button on-click="changeColor" data-color="red">Red</button>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `ford-app-redux`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class FordAppRedux extends ReduxMixin(Polymer.Element) {
+      static get is() { return 'ford-app-redux'; }
+      static get properties() {
+        return {
+          bkgroundcolor: {
+            type: String,            
+            statePath(state) {
+              return state.bkcolor;
+            }
+          },
+          bkgroundcolors: {
+            type: String,
+            value: 'green'
+          }
+        };
+      }           
+      
+    static get actions() {
+    return {
+      changeColorState(bkColor) {
+        switch(bkColor) {
+          case 'green':
+          return {
+               type: 'BKGROUND_COLOR_GREEN'                    
+          };
+          case 'blue':
+          return {
+               type: 'BKGROUND_COLOR_BLUE'                    
+          };
+          case 'red':
+          return {
+               type: 'BKGROUND_COLOR_RED'                    
+          };
+        }       
+      }
+    };
+  }
+  
+  changeColor(e) {  
+   this.dispatch('changeColorState',e.target.dataset.color);         
+  }
+
+  connectedCallback() {
+    super.connectedCallback();    
+    setTimeout(() => {
+        this.dispatch('changeColorState', 'blue');
+    }, 2000);
+  }
+}
+
+    window.customElements.define(FordAppRedux.is, FordAppRedux);
+  </script>
+</dom-module>

@@ -1,0 +1,47 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="demo/redux-mixin.html">
+
+<dom-module id="ford-app-message">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #backgroundSection {
+        width:100px;
+        height:100px;
+      }     
+    </style>
+    
+    <h3>Redux - [[bkgroundcolor]] </h3>    
+    <div class="section">
+       <div  style$="background-color:[[bkgroundcolor]]"id="backgroundSection"></div>
+       <button on-click="changeColor" data-color="green">Green</button>
+       <button on-click="changeColor" data-color="blue">Blue</button>
+       <button on-click="changeColor" data-color="red">Red</button>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `ford-app-redux`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+     MessageMixin = Parent => class MessageMixin extends ReduxMixin(Parent) {
+      static get properties() {
+        return {
+          message: {
+            type: String,
+            statePath: 'bkcolor'
+          }
+        }
+      }
+    }
+
+    window.customElements.define(FordAppMessage.is, FordAppMessage);
+  </script>
+</dom-module>

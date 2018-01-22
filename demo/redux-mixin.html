@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer-redux/polymer-redux.html">
+<script src="../node_modules/redux/dist/redux.js"></script>
+<script>
+  // Setup a Redux store
+  var initial = {bkcolor: 'green'}; 
+  
+  const reducer = (state, action) => {
+
+    switch(action.type) {
+       case 'BKGROUND_COLOR_GREEN':
+       return Object.assign({}, state, {
+        bkcolor: 'green'
+       });
+       case 'BKGROUND_COLOR_BLUE':
+       return Object.assign({}, state, {
+        bkcolor: 'blue'
+       });
+       case 'BKGROUND_COLOR_RED':
+       return Object.assign({}, state, {
+        bkcolor: 'red'
+       });       
+       default:
+       return state;
+    }
+  };
+  const store = Redux.createStore(reducer, initial);  
+  ReduxMixin = PolymerRedux(store);
+</script>
