@@ -2,20 +2,20 @@
 
 
 
-## Install the Phoenix-CLI
+## Install the Polymer-CLI
 
-First, make sure you have the [Phoenix CLI](https://www.npmjs.com/package/phoenix-cli) installed. Then run `phoenix serve` to serve your element locally.
+First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/phoenix-cli) installed. Then run `Polymer serve` to serve your element locally.
 
 ## Viewing Your Element
 
 ```
-$ phoenix serve
+$ polymer serve
 ```
 
 ## Running Tests
 
 ```
-$ phoenix test
+$ polymer test
 ```
 
 Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
