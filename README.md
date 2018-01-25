@@ -1,4 +1,4 @@
-# \<ford-app-redux\>
+# \<polymer-app-redux\>
 
 
 
